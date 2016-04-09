@@ -41,7 +41,7 @@
         <!-- 此处可以有其他内容，已省略 -->
         <dependency>
             <groupId>octoteam.tahiti</groupId>
-            <artifactId>quota</artifactId>
+            <artifactId>tahiti-quota</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
     </dependencies>
