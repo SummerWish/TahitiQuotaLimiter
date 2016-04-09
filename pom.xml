@@ -12,8 +12,16 @@
         <dependency>
             <groupId>com.google.guava</groupId>
             <artifactId>guava</artifactId>
-            <version>19.0</version>
+            <version>18.0</version>
         </dependency>
     </dependencies>
+
+    <distributionManagement>
+        <snapshotRepository>
+            <id>archiva.snapshots</id>
+            <name>Tahiti Snapshot Repository</name>
+            <url>http://10.60.40.241:8888/repository/snapshots/</url>
+        </snapshotRepository>
+    </distributionManagement>
 
 </project>
