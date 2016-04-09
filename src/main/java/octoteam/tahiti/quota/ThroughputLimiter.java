@@ -4,7 +4,7 @@ import com.google.common.util.concurrent.RateLimiter;
 /**
  * 基于吞吐率的限流器。获得令牌超过每秒的吞吐率阈值限制后，就停止提供服务.
  */
-public class ThroughoutLimiter extends QuotaLimiter {
+public class ThroughputLimiter extends QuotaLimiter {
 
     private final double QPS;
     private final RateLimiter rl;
@@ -14,7 +14,7 @@ public class ThroughoutLimiter extends QuotaLimiter {
      *
      * @param QPS 每秒吞吐率阈值.
      */
-    public ThroughoutLimiter(double QPS) {
+    public ThroughputLimiter(double QPS) {
         this.QPS = QPS;
         rl = RateLimiter.create(QPS);
     }

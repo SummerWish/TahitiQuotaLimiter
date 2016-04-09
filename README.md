@@ -51,7 +51,7 @@
 
 ### 手工下载
 
-- [tahiti-quota](http://10.60.40.241:8888/repository/snapshots/octoteam/tahiti/tahiti-quota/1.0-SNAPSHOT/tahiti-quota-1.0-20160409.155121-1.jar)
+- [tahiti-quota](http://10.60.40.241:8888/repository/snapshots/octoteam/tahiti/tahiti-quota/1.0-SNAPSHOT/tahiti-quota-1.0-20160409.171145-2.jar)
 
 除了这个库本身以外，TahitiQuotaLimiter 还依赖于 [guava](https://github.com/google/guava/wiki/Release19)，因此您还需要将以下 jar 下载下来添加到项目中：
 
@@ -59,26 +59,29 @@
 
 ## 示例
 
-### 限制到每秒 5 次请求
+### 限制至多 3 次请求
+
+当请求次数超过 3 次后，后续的请求将全部失败：
+
+```java
+QuotaLimiter limiter = new CapacitytLimiter(3);
+
+limiter.tryAcquire(); // true
+limiter.tryAcquire(); // true
+limiter.tryAcquire(); // true
+limiter.tryAcquire(); // false
+limiter.tryAcquire(); // false
+// ...
+```
+
+### 限制每秒至多 5 次请求
 
 超出 5 次/s 频率的请求将失败：
 
 ```java
-ThroughoutLimiter limiter = new ThroughoutLimiter(5);
+QuotaLimiter limiter = new ThroughputLimiter(5);
 
-if (limiter.tryAcquire()) {
-	// 没有超出限额，继续
-} else {
-	// 超出了限额，提示错误或忽略
-} 
-```
-
-### 限制至多 10 次请求
-
-当请求次数超过 10 次后，后续的请求将全部失败：
-
-```java
-CapacityLimiter limiter = new CapacitytLimiter(10);
+// .....
 
 if (limiter.tryAcquire()) {
 	// 没有超出限额，继续
