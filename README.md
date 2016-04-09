@@ -1,6 +1,8 @@
 # TahitiQuotaLimiter
 
-[![Build Status](https://travis-ci.org/SummerWish/TahitiQuotaLimiter.svg?branch=master)](https://travis-ci.org/SummerWish/TahitiQuotaLimiter) [![Coverage Status](https://coveralls.io/repos/github/SummerWish/TahitiQuotaLimiter/badge.svg?branch=master)](https://coveralls.io/github/SummerWish/TahitiQuotaLimiter?branch=master)
+[![Build Status](https://travis-ci.org/SummerWish/TahitiQuotaLimiter.svg?branch=master)](https://travis-ci.org/SummerWish/TahitiQuotaLimiter)
+[![Coverage Status](https://coveralls.io/repos/github/SummerWish/TahitiQuotaLimiter/badge.svg?branch=master)](https://coveralls.io/github/SummerWish/TahitiQuotaLimiter?branch=master)
+[![Dependency Status](https://www.versioneye.com/user/projects/5709196ffcd19a005185517c/badge.svg)](https://www.versioneye.com/user/projects/5709196ffcd19a005185517c)
 
 一个简单的配额限制库。
 
@@ -49,12 +51,11 @@
 
 ### 手工下载
 
-TahitiQuotaLimiter 依赖于 [guava 18](https://github.com/google/guava/wiki/Release18)。您需要将以下 jar 全部下载下来添加到项目中：
-
-- [guava-18.0.jar](http://central.maven.org/maven2/com/google/guava/guava/18.0/guava-18.0.jar)
-
 - [quota-1.0-20160409.081452-1.jar](http://10.60.40.241:8888/repository/snapshots/octoteam/tahiti/quota/1.0-SNAPSHOT/quota-1.0-20160409.081452-1.jar)
 
+除了这个库本身以外，TahitiQuotaLimiter 还依赖于 [guava](https://github.com/google/guava/wiki/Release19)，因此您还需要将以下 jar 下载下来添加到项目中：
+
+- [guava-19.0.jar](http://central.maven.org/maven2/com/google/guava/guava/19.0/guava-19.0.jar)
 
 ## 示例
 
