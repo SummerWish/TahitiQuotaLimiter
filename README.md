@@ -51,11 +51,11 @@
 
 ### 手工下载
 
-- [quota-1.0-20160409.081452-1.jar](http://10.60.40.241:8888/repository/snapshots/octoteam/tahiti/quota/1.0-SNAPSHOT/quota-1.0-20160409.081452-1.jar)
+- [tahiti-quota](http://10.60.40.241:8888/repository/snapshots/octoteam/tahiti/tahiti-quota/1.0-SNAPSHOT/tahiti-quota-1.0-20160409.155121-1.jar)
 
 除了这个库本身以外，TahitiQuotaLimiter 还依赖于 [guava](https://github.com/google/guava/wiki/Release19)，因此您还需要将以下 jar 下载下来添加到项目中：
 
-- [guava-19.0.jar](http://central.maven.org/maven2/com/google/guava/guava/19.0/guava-19.0.jar)
+- [guava](http://central.maven.org/maven2/com/google/guava/guava/19.0/guava-19.0.jar)
 
 ## 示例
 
