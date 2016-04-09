@@ -51,7 +51,7 @@
 
 TahitiQuotaLimiter 依赖于 [guava 18](https://github.com/google/guava/wiki/Release18)。您需要将以下 jar 全部下载下来添加到项目中：
 
-- [guava-18.0.jar](http://10.60.40.241:8888/repository/internal/com/google/guava/guava/18.0/guava-18.0.jar)
+- [guava-18.0.jar](http://central.maven.org/maven2/com/google/guava/guava/18.0/guava-18.0.jar)
 
 - [quota-1.0-20160409.081452-1.jar](http://10.60.40.241:8888/repository/snapshots/octoteam/tahiti/quota/1.0-SNAPSHOT/quota-1.0-20160409.081452-1.jar)
 
