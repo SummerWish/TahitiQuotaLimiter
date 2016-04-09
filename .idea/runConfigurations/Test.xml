@@ -11,6 +11,7 @@
           <option name="goals">
             <list>
               <option value="test" />
+              <option value="jacoco:report" />
             </list>
           </option>
           <option name="profilesMap">

@@ -1,5 +1,7 @@
 # TahitiQuotaLimiter
 
+[![Build Status](https://travis-ci.org/SummerWish/TahitiQuotaLimiter.svg?branch=master)](https://travis-ci.org/SummerWish/TahitiQuotaLimiter) [![Coverage Status](https://coveralls.io/repos/github/SummerWish/TahitiQuotaLimiter/badge.svg?branch=master)](https://coveralls.io/github/SummerWish/TahitiQuotaLimiter?branch=master)
+
 一个简单的配额限制库。
 
 - 支持基于速率限流（Query Per Second）
