@@ -26,14 +26,11 @@
     
     <repositories>
         <repository>
-            <id>tahiti</id>
-            <url>http://10.60.40.241:8888/repository/internal/</url>
-            <releases>
-                <enabled>false</enabled>
-            </releases>
-            <snapshots>
-                <enabled>true</enabled>
-            </snapshots>
+            <id>tahiti-nexus-snapshots</id>
+            <name>Tahiti NEXUS</name>
+            <url>http://sse.tongji.edu.cn/tahiti/nexus/content/groups/public</url>
+            <releases><enabled>false</enabled></releases>
+            <snapshots><enabled>true</enabled></snapshots>
         </repository>
     </repositories>
 
@@ -51,7 +48,7 @@
 
 ### 手工下载
 
-- [tahiti-quota](http://10.60.40.241:8888/repository/snapshots/octoteam/tahiti/tahiti-quota/1.0-SNAPSHOT/tahiti-quota-1.0-20160409.171145-2.jar)
+- [tahiti-quota](http://sse.tongji.edu.cn/tahiti/nexus/service/local/repositories/public/content/octoteam/tahiti/tahiti-quota/1.0-SNAPSHOT/tahiti-quota-1.0-20160409.184252-1.jar)
 
 除了这个库本身以外，TahitiQuotaLimiter 还依赖于 [guava](https://github.com/google/guava/wiki/Release19)，因此您还需要将以下 jar 下载下来添加到项目中：
 
