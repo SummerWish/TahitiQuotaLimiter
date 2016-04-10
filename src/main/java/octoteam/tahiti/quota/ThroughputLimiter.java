@@ -1,4 +1,5 @@
 package octoteam.tahiti.quota;
+
 import com.google.common.util.concurrent.RateLimiter;
 
 /**
@@ -17,6 +18,11 @@ public class ThroughputLimiter extends QuotaLimiter {
     public ThroughputLimiter(double QPS) {
         this.QPS = QPS;
         rl = RateLimiter.create(QPS);
+    }
+
+    public ThroughputLimiter(RateLimiter limiter) {
+        this.QPS = limiter.getRate();
+        rl = limiter;
     }
 
     /**
