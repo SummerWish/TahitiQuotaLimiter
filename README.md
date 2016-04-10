@@ -48,7 +48,7 @@
 
 ### 手工下载
 
-- [tahiti-quota](http://sse.tongji.edu.cn/tahiti/nexus/service/local/repositories/public/content/octoteam/tahiti/tahiti-quota/1.0-SNAPSHOT/tahiti-quota-1.0-20160409.184252-1.jar)
+- [tahiti-quota](http://sse.tongji.edu.cn/tahiti/nexus/service/local/repositories/public/content/octoteam/tahiti/tahiti-quota/1.0-SNAPSHOT/tahiti-quota-1.0-20160410.135120-2.jar)
 
 除了这个库本身以外，TahitiQuotaLimiter 还依赖于 [guava](https://github.com/google/guava/wiki/Release19)，因此您还需要将以下 jar 下载下来添加到项目中：
 

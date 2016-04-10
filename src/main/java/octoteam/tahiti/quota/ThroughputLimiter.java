@@ -20,16 +20,18 @@ public class ThroughputLimiter extends QuotaLimiter {
         rl = RateLimiter.create(QPS);
     }
 
+    /**
+     * 根据 RateLimiter 对象创建限流器
+     *
+     * @param limiter RateLimiter 对象
+     */
     public ThroughputLimiter(RateLimiter limiter) {
         this.QPS = limiter.getRate();
         rl = limiter;
     }
 
     /**
-     * 尝试获取令牌,判断是否到达吞吐率阈值,
-     * 请求RateLimiter, 超过阈值会被阻塞.
-     *
-     * @return 如果未超出阈值返回 true, 否则返回 false.
+     * {@inheritDoc}
      */
     public boolean tryAcquire() {
         return rl.tryAcquire();
@@ -38,7 +40,7 @@ public class ThroughputLimiter extends QuotaLimiter {
     /**
      * 获取预设的吞吐率阈值.
      *
-     * @return 返回预设的吞吐率阈值.
+     * @return 吞吐率阈值
      */
     public double getQPS() {
         return this.QPS;

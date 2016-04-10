@@ -18,9 +18,7 @@ public class CapacityLimiter extends QuotaLimiter {
     }
 
     /**
-     * 尝试获取令牌,判断是否到达容量阈值.
-     *
-     * @return 如果未超出阈值返回 true, 否则返回 false.
+     * {@inheritDoc}
      */
     public boolean tryAcquire() {
         if (acquired < capacity) {
@@ -34,7 +32,7 @@ public class CapacityLimiter extends QuotaLimiter {
     /**
      * 获取预设的容量阈值.
      *
-     * @return 返回预设的容量阈值.
+     * @return 容量阈值
      */
     public int getCapacity() {
         return this.capacity;
