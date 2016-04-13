@@ -4,6 +4,8 @@
 [![Coverage Status](https://coveralls.io/repos/github/SummerWish/TahitiQuotaLimiter/badge.svg?branch=master)](https://coveralls.io/github/SummerWish/TahitiQuotaLimiter?branch=master)
 [![Dependency Status](https://www.versioneye.com/user/projects/5709196ffcd19a005185517c/badge.svg)](https://www.versioneye.com/user/projects/5709196ffcd19a005185517c)
 
+[Documentation](http://summerwish.github.io/TahitiQuotaLimiter/)
+
 一个简单的配额限制库。
 
 - 支持基于速率限流（Query Per Second）
