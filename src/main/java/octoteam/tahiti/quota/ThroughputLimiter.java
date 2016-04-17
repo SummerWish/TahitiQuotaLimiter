@@ -7,8 +7,8 @@ import com.google.common.util.concurrent.RateLimiter;
  */
 public class ThroughputLimiter extends QuotaLimiter {
 
-    private final double QPS;
-    private final RateLimiter rl;
+    private double QPS;
+    private RateLimiter rl;
 
     /**
      * 根据传入数值设置吞吐率阈值.
@@ -17,7 +17,7 @@ public class ThroughputLimiter extends QuotaLimiter {
      */
     public ThroughputLimiter(double QPS) {
         this.QPS = QPS;
-        rl = RateLimiter.create(QPS);
+        reset();
     }
 
     /**
@@ -33,17 +33,34 @@ public class ThroughputLimiter extends QuotaLimiter {
     /**
      * {@inheritDoc}
      */
-    public boolean tryAcquire() {
-        return rl.tryAcquire();
+    public boolean tryAcquire(int permits) {
+        return rl.tryAcquire(permits);
     }
 
     /**
-     * 获取预设的吞吐率阈值.
+     * 获取当前吞吐率阈值.
      *
      * @return 吞吐率阈值
      */
     public double getQPS() {
         return this.QPS;
+    }
+
+    /**
+     * 设定吞吐率阈值 (仅对后续请求生效)
+     *
+     * @param QPS 吞吐率阈值
+     */
+    public void setQPS(double QPS) {
+        this.QPS = QPS;
+        rl.setRate(QPS);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public void reset() {
+        rl = RateLimiter.create(QPS);
     }
 
 }

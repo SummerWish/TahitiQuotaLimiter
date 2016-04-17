@@ -10,6 +10,21 @@ public abstract class QuotaLimiter {
      *
      * @return 如果未超出阈值返回 true，否则返回 false。
      */
-    public abstract boolean tryAcquire();
+    public boolean tryAcquire() {
+        return tryAcquire(1);
+    }
+
+    /**
+     * 尝试获取给定数量的一批令牌, 如果能被获取且获取后不会超出限额
+     *
+     * @param permits 请求的令牌数量
+     * @return 如果请求的令牌都能立即获取则返回 true
+     */
+    public abstract boolean tryAcquire(int permits);
+
+    /**
+     * 按当前配置重置令牌
+     */
+    public abstract void reset();
 
 }

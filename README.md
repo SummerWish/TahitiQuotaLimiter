@@ -50,7 +50,7 @@
 
 ### 手工下载
 
-- [tahiti-quota](http://sse.tongji.edu.cn/tahiti/nexus/service/local/repositories/public/content/octoteam/tahiti/tahiti-quota/1.0-SNAPSHOT/tahiti-quota-1.0-20160410.135120-2.jar)
+- [tahiti-quota](http://sse.tongji.edu.cn/tahiti/nexus/service/local/repositories/public/content/octoteam/tahiti/tahiti-quota/1.0-SNAPSHOT/tahiti-quota-1.0-20160417.163257-4.jar)
 
 除了这个库本身以外，TahitiQuotaLimiter 还依赖于 [guava](https://github.com/google/guava/wiki/Release19)，因此您还需要将以下 jar 下载下来添加到项目中：
 
@@ -63,7 +63,7 @@
 当请求次数超过 3 次后，后续的请求将全部失败：
 
 ```java
-QuotaLimiter limiter = new CapacitytLimiter(3);
+QuotaLimiter limiter = new CapacityLimiter(3);
 
 limiter.tryAcquire(); // true
 limiter.tryAcquire(); // true
@@ -87,4 +87,58 @@ if (limiter.tryAcquire()) {
 } else {
 	// 超出了限额，提示错误或忽略
 } 
+```
+
+### 重置配额状态
+
+恢复到全部配额都未使用的状态：
+
+```java
+QuotaLimiter limiter = new CapacityLimiter(2);
+// or ThroughputLimiter
+
+limiter.tryAcquire(); // true
+limiter.tryAcquire(); // true
+limiter.tryAcquire(); // false
+
+limiter.reset();
+limiter.tryAcquire(); // true
+limiter.tryAcquire(); // true
+limiter.tryAcquire(); // false
+```
+
+### 批量请求
+
+一次性进行多次请求，如果全部请求都没有超出配额，则成功，否则全部请求都不会进行。
+
+注意，与多次进行单个请求不同的是，批量请求要么全部成功，要么全部失败。
+
+```java
+QuotaLimiter limiter = new CapacityLimiter(4);
+// or ThroughputLimiter
+
+limiter.tryAcquire(10); // false, 剩余可用额度小于请求次数, 失败, 不改变任何状态
+limiter.tryAcquire(); // true
+limiter.tryAcquire(3); // true
+limiter.tryAcquire(); // false
+```
+
+注：`limiter.tryAcquire()` 等价于 `limiter.tryAcquire(1)`。
+
+### 动态修改配额
+
+CapacityLimiter 和 ThroughputLimiter 都支持动态扩充或收缩配额:
+
+```java
+CapacityLimiter limiter = new CapacityLimiter(2);
+limiter.tryAcquire(2); // true
+limiter.tryAcquire(); // false
+limiter.setCapacity(5);
+limiter.tryAcquire(3); // true
+limiter.tryAcquire(); // false
+```
+
+```java
+ThroughputLimiter limiter = new ThroughputLimiter(1.0);
+limiter.setQPS(2.0); // update QPS to 2.0
 ```

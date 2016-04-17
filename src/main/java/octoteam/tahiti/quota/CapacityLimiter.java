@@ -5,8 +5,8 @@ package octoteam.tahiti.quota;
  */
 public class CapacityLimiter extends QuotaLimiter {
 
-    private final int capacity;
-    private int acquired = 0;
+    private int capacity;
+    private int acquired;
 
     /**
      * 根据传入数值设置容量阈值
@@ -15,14 +15,15 @@ public class CapacityLimiter extends QuotaLimiter {
      */
     public CapacityLimiter(int capacity) {
         this.capacity = capacity;
+        reset();
     }
 
     /**
      * {@inheritDoc}
      */
-    public boolean tryAcquire() {
-        if (acquired < capacity) {
-            acquired++;
+    public boolean tryAcquire(int permits) {
+        if (acquired + permits <= capacity) {
+            acquired += permits;
             return true;
         } else {
             return false;
@@ -30,7 +31,7 @@ public class CapacityLimiter extends QuotaLimiter {
     }
 
     /**
-     * 获取预设的容量阈值.
+     * 获取当前容量阈值.
      *
      * @return 容量阈值
      */
@@ -38,5 +39,20 @@ public class CapacityLimiter extends QuotaLimiter {
         return this.capacity;
     }
 
+    /**
+     * 设置容量阈值, 仅对后续请求有效
+     *
+     * @param capacity 容量阈值
+     */
+    public void setCapacity(int capacity) {
+        this.capacity = capacity;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public void reset() {
+        acquired = 0;
+    }
 }
 
